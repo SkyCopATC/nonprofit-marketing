@@ -796,7 +796,7 @@ function createCampaign(name){
   t.campaigns.push({
     id, name: name || 'New Campaign', type:'Membership Drive', status:'planning',
     goal:'', audience:'', startDate:'', endDate:'',
-    channels:[], budget:'', kpis:'', notes:'',
+    channels:[], budget:'', kpis:'', notes:'', photoUrl:'', photoData:'',
     messaging:{ valueProp:'', keyMessages:'', cta:'' },
     timeline:[], assets:[],
     createdAt: new Date().toISOString()
@@ -816,6 +816,22 @@ function updateCampaignMsg(id, key, value){
   const c = t.campaigns.find(x => x.id === id);
   if (c){ c.messaging = c.messaging||{}; c.messaging[key] = value; save(); }
 }
+
+function uploadCampaignPhoto(id, input){
+  const file = input.files[0]; if(!file) return;
+  if (file.size > 500*1024 && !confirm('Image is larger than 500KB. Continue?')) return;
+  const reader = new FileReader();
+  reader.onload = e => { updateCampaign(id, { photoData: e.target.result }); renderCampaign(); };
+  reader.readAsDataURL(file);
+}
+function uploadEventPhoto(id, input){
+  const file = input.files[0]; if(!file) return;
+  if (file.size > 500*1024 && !confirm('Image is larger than 500KB. Continue?')) return;
+  const reader = new FileReader();
+  reader.onload = e => { updateEvent(id, { photoData: e.target.result }); renderEvents(); };
+  reader.readAsDataURL(file);
+}
+
 function deleteCampaign(id){
   const t = teamData(); if (!t) return;
   t.campaigns = t.campaigns.filter(c => c.id !== id);
@@ -837,7 +853,7 @@ function events(){ const t = teamData(); return t ? t.events : []; }
 function createEvent(name){
   const t = teamData(); if (!t) return null;
   const id = newId('e-');
-  t.events.push({ id, name: name||'New Event', type:'Open House', date:'', location:'', goal:'', attendees:'', notes:'', preEvent:'', dayOf:'', postEvent:'', createdAt:new Date().toISOString() });
+  t.events.push({ id, name: name||'New Event', type:'Open House', date:'', location:'', goal:'', attendees:'', notes:'', preEvent:'', dayOf:'', postEvent:'', photoUrl:'', photoData:'', createdAt:new Date().toISOString() });
   save();
   return id;
 }
@@ -1134,6 +1150,11 @@ function renderCampaign(){
       </div>
       <div class="field"><label>Goal</label><textarea oninput="updateCampaign('${c.id}',{goal:this.value})" style="min-height:60px" placeholder="What does success look like? E.g., '50 new members by June 30'">${escapeHtml(c.goal)}</textarea></div>
       <div class="field"><label>KPIs / How you'll measure</label><textarea oninput="updateCampaign('${c.id}',{kpis:this.value})" style="min-height:60px" placeholder="Open rate >25%, # new members signed up, social engagement rate, etc.">${escapeHtml(c.kpis)}</textarea></div>
+      <div class="field"><label>Hero Image (optional)</label>
+        <input value="${escapeHtml(c.photoUrl||'')}" placeholder="Paste image URL OR upload below" oninput="updateCampaign('${c.id}',{photoUrl:this.value})"/>
+        <input type="file" accept="image/*" style="margin-top:8px;font-size:13px" onchange="uploadCampaignPhoto('${c.id}', this)"/>
+        ${c.photoData ? `<div style="margin-top:10px"><img src="${c.photoData}" style="max-width:280px;border-radius:8px;border:1px solid var(--border)"/><div><button class="btn btn-ghost" style="font-size:11px;margin-top:4px" onclick="updateCampaign('${c.id}',{photoData:''}); renderCampaign()">Remove uploaded image</button></div></div>` : (c.photoUrl ? `<div style="margin-top:10px"><img src="${escapeHtml(c.photoUrl)}" style="max-width:280px;border-radius:8px;border:1px solid var(--border)" onerror="this.style.display='none'"/></div>` : '')}
+      </div>
     </div>
     <div class="section">
       <div class="section-title">Audience</div>
@@ -1190,6 +1211,11 @@ function renderEvents(){
         <div class="field"><label>Date</label><input type="date" value="${escapeHtml(e.date||'')}" oninput="updateEvent('${e.id}',{date:this.value})"></div>
         <div class="field"><label>Location</label><input type="text" value="${escapeHtml(e.location||'')}" oninput="updateEvent('${e.id}',{location:this.value})"></div>
         <div class="field"><label>Goal</label><input type="text" value="${escapeHtml(e.goal||'')}" oninput="updateEvent('${e.id}',{goal:this.value})" placeholder="30 attendees, 10 new sign-ups"></div>
+        <div class="field"><label>Cover Photo (optional)</label>
+          <input value="${escapeHtml(e.photoUrl||'')}" placeholder="Paste image URL OR upload below" oninput="updateEvent('${e.id}',{photoUrl:this.value})"/>
+          <input type="file" accept="image/*" style="margin-top:8px;font-size:13px" onchange="uploadEventPhoto('${e.id}', this)"/>
+          ${e.photoData ? `<div style="margin-top:10px"><img src="${e.photoData}" style="max-width:240px;border-radius:8px;border:1px solid var(--border)"/><div><button class="btn btn-ghost" style="font-size:11px;margin-top:4px" onclick="updateEvent('${e.id}',{photoData:''}); renderEvents()">Remove uploaded image</button></div></div>` : (e.photoUrl ? `<div style="margin-top:10px"><img src="${escapeHtml(e.photoUrl)}" style="max-width:240px;border-radius:8px;border:1px solid var(--border)" onerror="this.style.display='none'"/></div>` : '')}
+        </div>
         <div class="field"><label>Expected attendees</label><input type="text" value="${escapeHtml(e.attendees||'')}" oninput="updateEvent('${e.id}',{attendees:this.value})"></div>
       </div>
       <div class="field"><label>Pre-Event Plan</label><textarea oninput="updateEvent('${e.id}',{preEvent:this.value})" style="min-height:80px">${escapeHtml(e.preEvent||'')}</textarea></div>

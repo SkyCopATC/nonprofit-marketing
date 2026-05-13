@@ -1,204 +1,194 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nonprofit Marketing — User Guide</title>
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-:root{--navy:#1B3A5C;--teal:#2563EB;--gold:#D4A017;--bg:#f0f4f8;--white:#fff;--border:#e2e8f0;--text:#1a1a2e;--muted:#64748b;--light:#f8fafc;--red:#c0392b;--green:#2d7a4f}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.6}
-a{color:var(--teal);text-decoration:none}
-a:hover{text-decoration:underline}
-.topbar{background:var(--navy);color:#fff;padding:14px 24px;display:flex;align-items:center;gap:14px;position:sticky;top:0;z-index:20;box-shadow:0 2px 8px rgba(0,0,0,.1)}
-.topbar .mark{width:34px;height:34px;background:var(--teal);border-radius:9px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:16px}
-.topbar .title{font-size:15px;font-weight:700;flex:1}
-.topbar .title span{font-size:11px;font-weight:400;color:rgba(255,255,255,.6);display:block;line-height:1.2}
-.topbar a{color:#fff;font-size:13px;padding:8px 14px;border:1px solid rgba(255,255,255,.25);border-radius:8px;font-weight:600;background:rgba(255,255,255,.06)}
-.topbar a:hover{background:rgba(255,255,255,.12);text-decoration:none}
-.layout{display:grid;grid-template-columns:240px 1fr;max-width:1200px;margin:0 auto;gap:28px;padding:28px 24px 60px}
-.toc{position:sticky;top:78px;align-self:start;background:var(--navy);border:1px solid var(--navy);border-radius:14px;padding:18px;max-height:calc(100vh - 100px);overflow-y:auto;box-shadow:0 2px 8px rgba(0,0,0,.08)}
-.toc-title{font-size:11px;font-weight:700;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px}
-.toc a{display:block;padding:7px 10px;font-size:13px;color:rgba(255,255,255,.82);border-radius:6px;font-weight:500;margin-bottom:2px}
-.toc a:hover{background:rgba(255,255,255,.08);color:#fff;text-decoration:none}
-.toc a.active{background:var(--teal);color:#fff;font-weight:600}
-.main{background:#fff;border:1px solid var(--border);border-radius:14px;padding:40px}
-.hero{background:linear-gradient(135deg,var(--navy),var(--teal));color:#fff;padding:32px;border-radius:14px;margin-bottom:28px}
-.hero h1{font-size:30px;font-weight:700;margin-bottom:8px}
-.hero p{font-size:15px;opacity:.92}
-h2{font-size:24px;color:var(--navy);margin:36px 0 12px;font-weight:700;scroll-margin-top:80px}
-h2:first-of-type{margin-top:0}
-h3{font-size:17px;color:var(--navy);margin:22px 0 8px;font-weight:700}
-p{margin-bottom:12px}
-ul,ol{margin:0 0 14px 22px}
-li{margin-bottom:6px}
-.callout{background:var(--light);border-left:4px solid var(--teal);padding:14px 18px;border-radius:8px;margin:14px 0;font-size:14px}
-code{background:var(--light);padding:1px 6px;border-radius:4px;font-family:'Courier New',monospace;font-size:13px;color:var(--navy);border:1px solid var(--border)}
-table{width:100%;border-collapse:collapse;margin:14px 0;font-size:14px}
-th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--border)}
-th{background:var(--light);color:var(--navy);font-weight:700}
-@media(max-width:900px){.layout{grid-template-columns:1fr;gap:14px;padding:18px 14px 40px}.toc{position:static;max-height:none;order:2}.main{padding:22px;order:1}.hero{padding:22px}.hero h1{font-size:22px}}
-</style></head><body>
-<div class="topbar"><div class="mark">B</div><div class="title">Build Your Club Academy<span>Nonprofit Marketing — User Guide</span></div><a href="/">← Back to App</a></div>
-
+  :root {
+    --navy:#1B3A5C;--teal:#0F766E;--gold:#D4A843;--light:#EFF4FA;--mid:#C8D8EA;
+    --dark:#1E293B;--muted:#64748B;--bg:#F8FAFC;--card:#FFFFFF;--radius:10px;
+    --green:#15803D;--green-bg:#DCFCE7;--amber:#B45309;--amber-bg:#FEF3C7;
+    --red:#DC2626;--red-bg:#FEE2E2;--purple:#7C3AED;--purple-bg:#F5F3FF;
+    --blue:#2563EB;--blue-bg:#EFF6FF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Segoe UI',Arial,sans-serif;background:var(--bg);color:var(--dark);line-height:1.7;font-size:15px}
+  .layout{display:flex;min-height:100vh}
+  .sidebar{width:265px;min-width:265px;background:var(--navy);color:#fff;position:sticky;top:0;height:100vh;overflow-y:auto;padding:0 0 32px;flex-shrink:0}
+  .sidebar-brand{padding:24px 20px 18px;border-bottom:1px solid rgba(255,255,255,.14);margin-bottom:10px}
+  .sidebar-brand .logo{font-size:18px;font-weight:800;color:var(--gold)}
+  .sidebar-brand .sub{font-size:11px;color:rgba(255,255,255,.45);margin-top:4px;text-transform:uppercase;letter-spacing:.5px;line-height:1.4}
+  .toc-label{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.32);padding:10px 20px 4px}
+  .toc a{display:block;padding:7px 20px;color:rgba(255,255,255,.68);text-decoration:none;font-size:13px;border-left:3px solid transparent;transition:all .15s}
+  .toc a:hover,.toc a.active{color:#fff;background:rgba(255,255,255,.08);border-left-color:var(--gold)}
+  .toc a.sub{padding-left:34px;font-size:12px;color:rgba(255,255,255,.46)}
+  .toc a.sub:hover{color:rgba(255,255,255,.82)}
+  .toc-sep{border-top:1px solid rgba(255,255,255,.1);margin:10px 0}
+  .main{flex:1;min-width:0;padding:48px 56px;max-width:900px}
+  @media(max-width:820px){.sidebar{display:none}.main{padding:24px 18px}}
+  .hero{background:linear-gradient(135deg,var(--navy) 0%,#1e4d8c 100%);border-radius:var(--radius);padding:40px 44px;color:#fff;margin-bottom:48px}
+  .hero-eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:1.5px;color:var(--gold);margin-bottom:10px;font-weight:600}
+  .hero h1{font-size:28px;font-weight:800;line-height:1.25;margin-bottom:10px}
+  .hero p{color:rgba(255,255,255,.78);font-size:15px;max-width:580px;line-height:1.65}
+  .hero-badges{display:flex;gap:.6rem;margin-top:18px;flex-wrap:wrap}
+  .hero-badge{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);border-radius:20px;padding:4px 12px;font-size:12px;font-weight:600;color:#fff}
+  .section{margin-bottom:60px}
+  h2{font-size:22px;font-weight:700;color:var(--navy);padding-bottom:10px;border-bottom:2px solid var(--mid);margin-bottom:22px;scroll-margin-top:24px}
+  h3{font-size:16px;font-weight:700;color:var(--teal);margin:26px 0 10px}
+  h4{font-size:14px;font-weight:700;color:var(--navy);margin:16px 0 6px}
+  p{margin-bottom:14px}
+  ul,ol{padding-left:22px;margin-bottom:14px}
+  li{margin-bottom:7px}
+  a{color:var(--blue)}
+  strong{color:var(--navy)}
+  .callout{border-left:4px solid var(--gold);background:var(--light);border-radius:0 var(--radius) var(--radius) 0;padding:14px 18px;margin:18px 0}
+  .callout.tip{border-left-color:var(--teal)}
+  .callout.warn{border-left-color:#E87B3B;background:#FFF8F0}
+  .callout.good{border-left-color:var(--green);background:var(--green-bg)}
+  .callout.note{border-left-color:var(--purple);background:var(--purple-bg)}
+  .callout.info{border-left-color:var(--blue);background:var(--blue-bg)}
+  .callout-head{font-weight:700;font-size:14px;color:var(--navy);margin-bottom:6px}
+  .callout p{margin-bottom:6px;font-size:14px}
+  .callout p:last-child{margin-bottom:0}
+  .tbl-wrap{overflow-x:auto;margin:16px 0 24px;border-radius:var(--radius);border:1px solid var(--mid)}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  th{background:var(--navy);color:#fff;text-align:left;padding:10px 14px;font-weight:600;font-size:13px}
+  td{padding:10px 14px;border-bottom:1px solid var(--mid);vertical-align:top}
+  tr:last-child td{border-bottom:none}
+  tr:nth-child(even) td{background:var(--light)}
+  .pill{display:inline-block;padding:2px 10px;border-radius:20px;font-size:12px;font-weight:700}
+  .pill.green{background:var(--green-bg);color:var(--green)}
+  .pill.blue{background:var(--blue-bg);color:var(--blue)}
+  .pill.purple{background:var(--purple-bg);color:var(--purple)}
+  .pill.gold{background:#FEF3C7;color:#92400E}
+  .back-top{display:inline-block;font-size:12px;color:var(--muted);text-decoration:none;margin-top:32px;padding:6px 14px;border:1px solid var(--mid);border-radius:20px}
+  .back-top:hover{color:var(--navy);border-color:var(--navy)}
+  @media print{.sidebar{display:none}.main{padding:24px}}
+</style>
+</head>
+<body>
 <div class="layout">
-<aside class="toc">
-<div class="toc-title">In This Guide</div>
-<a href="#what">What is this tool?</a>
-<a href="#start">Getting started</a>
-<a href="#workflow">Recommended workflow</a>
-<a href="#campaigns">Campaigns</a>
-<a href="#events">Events & Playbooks</a>
-<a href="#calendar">Annual Calendar</a>
-<a href="#journey">Member Journey</a>
-<a href="#partnerships">Partnership Outreach</a>
-<a href="#personas">Personas</a>
-<a href="#messaging">Messaging Library</a>
-<a href="#emails">Email Sequences</a>
-<a href="#collateral">Collateral Builder</a>
-<a href="#social">Social Media</a>
-<a href="#press">Press & Media</a>
-<a href="#justify">Board Justifications</a>
-<a href="#build">Build Marketing Plan</a>
-<a href="#committee">For the Membership & Outreach Committee</a>
-<a href="#team">Team & Pro</a>
-<a href="#disclaimer">Disclaimer</a>
-</aside>
+<nav class="sidebar">
+  <div class="sidebar-brand">
+    <div class="logo">Build Your Club</div>
+    <div class="sub">Nonprofit Marketing<br>User Guide</div>
+  </div>
+  <div class="toc-label">Contents</div>
+  <div class="toc">
+    <a href="#about">1. About This Tool</a>
+    <a href="#start">2. Getting Started</a>
+    <a href="#campaigns">3. Campaigns, Events &amp; Calendar</a>
+    <a href="#journey">4. Member Journey &amp; Partnerships</a>
+    <a href="#libraries">5. Org-Wide Libraries</a>
+    <a href="#assets">6. Collateral, Social, Press &amp; More</a>
+    <a href="#plan">7. Build Annual Marketing Plan</a>
+    <div class="toc-sep"></div>
+    <a href="#contact">Contact &amp; Support</a>
+  </div>
+</nav>
 
-<article class="main">
-<div class="hero"><h1>Nonprofit Marketing</h1><p>Plan campaigns, run outreach events, build collateral, send email sequences, draft press releases, and produce a board-ready marketing plan. Built for the Membership & Outreach Committee.</p></div>
+<main class="main" id="top">
+  <div class="hero">
+    <div class="hero-eyebrow">Build Your Club · User Guide</div>
+    <h1>Nonprofit Marketing<br>User Guide</h1>
+    <p>Plan, execute, and measure every marketing channel — campaigns, events, member journey, partnerships, social media, press, board justifications, and a polished annual marketing plan.</p>
+    <div class="hero-badges">
+      <span class="hero-badge">Campaigns</span>
+      <span class="hero-badge">Events</span>
+      <span class="hero-badge">Personas</span>
+      <span class="hero-badge">Email Sequences</span>
+      <span class="hero-badge">Annual Plan</span>
+    </div>
+  </div>
 
-<h2 id="what">What is this tool?</h2>
-<p>A working marketing system for nonprofits with under 20 staff and limited budget for outside agencies. It combines five things in one place:</p>
-<ul>
-<li><b>Campaign management</b> — track multiple marketing campaigns from planning to wrap-up</li>
-<li><b>Event marketing workflows</b> — pre/day-of/post plans for outreach events, with pre-built playbooks</li>
-<li><b>Org-wide libraries</b> — reusable personas, messaging, email sequences, press templates, board justifications</li>
-<li><b>Visual planning</b> — annual calendar, member journey map, partnership pipeline</li>
-<li><b>Output generation</b> — assemble a polished marketing plan as HTML or .docx</li>
-</ul>
+  <div class="section" id="about">
+    <h2>1. About This Tool</h2>
+    
+    <p>A working marketing operations platform purpose-built for small-staff nonprofits. Most marketing tools assume a dedicated team — this one assumes you're the executive director squeezing marketing in between a board meeting and a grant deadline.</p>
+    <p>Everything lives in one place: campaigns, events, personas, messaging, email sequences, collateral, social media, press kit, board justifications, event playbooks, and an annual marketing plan generator that pulls it all together.</p>
+    <a class="back-top" href="#top">↑ Back to top</a>
+  </div>
 
-<h2 id="start">Getting started</h2>
-<ol>
-<li>Sign up or sign in. Try the demo at <code>demo@example.org</code> / <code>demo</code> — a fully populated demo team with one campaign and one event.</li>
-<li>Enter your organization's name during the one-step onboarding.</li>
-<li>Start in the <b>Messaging Library</b> if this is your first time. Spending 30 minutes there pays off in every campaign.</li>
-</ol>
+  <div class="section" id="start">
+    <h2>2. Getting Started</h2>
+    
+    <p>Demo: <strong>demo@example.org</strong> / <strong>demo</strong> — populated with example campaigns, two personas, sample email sequences, and a marketing calendar.</p>
+    <h3>Where to start</h3>
+    <ol>
+      <li><strong>Set up Personas</strong> (Library → Personas) — who are you actually trying to reach?</li>
+      <li><strong>Write your Messaging Pillars</strong> — your 3-5 elevator pitches by audience</li>
+      <li><strong>Create your first Campaign</strong> — pick a real upcoming push (annual appeal, gala, awareness month)</li>
+      <li><strong>Build out the Member Journey</strong> — what does a first-time visitor experience over their first 90 days?</li>
+    </ol>
+    <a class="back-top" href="#top">↑ Back to top</a>
+  </div>
 
-<h2 id="workflow">Recommended workflow</h2>
-<ol>
-<li><b>Set up the Messaging Library</b> first — tagline, mission, value prop, key messages, brand voice, boilerplate. This is reusable everywhere.</li>
-<li><b>Define 2-3 personas</b> in the Personas page — who you're trying to reach.</li>
-<li><b>Map the Member Journey</b> — what does a prospect experience from awareness to recommit?</li>
-<li><b>Create a campaign</b> for your next initiative (membership drive, annual appeal, event series).</li>
-<li><b>Plan supporting events</b> for the campaign on the Events page.</li>
-<li><b>Generate collateral</b> for the campaign — one-pagers, flyers, info sheets.</li>
-<li><b>Draft email sequences</b> for nurture, welcome, post-event follow-up.</li>
-<li><b>Schedule social posts</b> on the calendar.</li>
-<li><b>Build the marketing plan</b> when you're ready to share with the board.</li>
-</ol>
+  <div class="section" id="campaigns">
+    <h2>3. Campaigns, Events &amp; Calendar</h2>
+    
+    <h3>Campaigns</h3>
+    <p>The unit of marketing work. Each captures objective, audience, channels, tactics, KPIs, timeline, owner, and budget.</p>
+    <h3>Campaign Detail</h3>
+    <p>Open any campaign to drill into tactics, channel mix, success metrics, asset list, and post-mortem.</p>
+    <h3>Events</h3>
+    <p>Galas, open houses, ribbon cuttings, volunteer days. Each event captures date, venue, expected attendance, marketing plan, run-of-show.</p>
+    <h3>Calendar</h3>
+    <p>A unified marketing calendar showing campaigns + events on one timeline.</p>
+    <a class="back-top" href="#top">↑ Back to top</a>
+  </div>
 
-<h2 id="campaigns">Campaigns</h2>
-<p>Each campaign is its own project. Track multiple in parallel. Statuses move through <b>Planning → Running → Wrapping Up → Complete</b>. Each captures:</p>
-<ul>
-<li>Type (Membership Drive, Annual Appeal, Event Promotion, Awareness, Capital, Volunteer Recruitment, Re-engagement, Stewardship, Advocacy)</li>
-<li>Goal, KPIs, budget</li>
-<li>Audience description</li>
-<li>Channels (Email, Direct Mail, Social, Website, Press, Paid Ads, Events, etc.)</li>
-<li>Campaign-specific messaging (value prop, key messages, CTA)</li>
-<li>Notes</li>
-</ul>
-<p>Switch between active campaigns via the navy/teal dropdown at the top of every campaign section page.</p>
+  <div class="section" id="journey">
+    <h2>4. Member Journey &amp; Partnerships</h2>
+    
+    <h3>Member Journey</h3>
+    <p>The end-to-end experience your audience has with your organization, from first awareness to long-time supporter. Map out touchpoints by stage (Awareness → Interest → Decision → Action → Retention → Advocacy).</p>
+    <h3>Partnerships</h3>
+    <p>Track every meaningful relationship — corporate sponsors, media partners, peer nonprofits, influencers. Each entry captures partner contact, agreement terms, deliverables, status.</p>
+    <a class="back-top" href="#top">↑ Back to top</a>
+  </div>
 
-<h2 id="events">Events & Playbooks</h2>
-<p>Outreach events get their own workflow — pre-event planning, day-of execution, post-event follow-up. The tool ships with <b>5 pre-built playbooks</b>:</p>
-<ul>
-<li><b>Open House</b> — 2-hour come-and-go event at your office or program site</li>
-<li><b>Info Session</b> — 45-60 minute presentation for prospective members/volunteers</li>
-<li><b>Tabling / Booth</b> — set up at a community festival or fair</li>
-<li><b>Virtual Webinar</b> — free 45-60 min educational webinar</li>
-<li><b>Major Fundraiser / Gala</b> — 6-month planning runway for larger events</li>
-</ul>
-<p>Create a new event, then choose <b>Apply Playbook</b> from its menu to load the corresponding pre-event, day-of, and post-event plans. Customize from there.</p>
+  <div class="section" id="libraries">
+    <h2>5. Org-Wide Libraries</h2>
+    
+    <h3>Personas</h3>
+    <p>Detailed profiles of your target audiences. Each persona captures demographics, motivations, channels, pain points, key messages. Drives audience selection in every campaign.</p>
+    <h3>Messaging Pillars</h3>
+    <p>Your 3-5 core messages by audience. Reusable across campaigns and channels.</p>
+    <h3>Email Sequences</h3>
+    <p>Reusable autoresponder flows — welcome series, donor cultivation, lapsed-donor reactivation, event-prep, post-event thank-you.</p>
+    <a class="back-top" href="#top">↑ Back to top</a>
+  </div>
 
-<h2 id="calendar">Annual Calendar</h2>
-<p>A 12-month visualization of all campaigns and events. Campaigns appear as teal bars across the months they run; events appear as date-stamped entries. Use this to spot scheduling conflicts and over-busy months.</p>
+  <div class="section" id="assets">
+    <h2>6. Collateral, Social, Press &amp; More</h2>
+    
+    <p>Library views for the supporting marketing assets:</p>
+    <ul>
+      <li><strong>Collateral</strong> — brochures, one-pagers, presentations, brand kit</li>
+      <li><strong>Social Media</strong> — channel inventory, posting cadence, content pillars</li>
+      <li><strong>Press</strong> — press kit, media list, recent coverage tracker</li>
+      <li><strong>Board Justifications</strong> — pre-built arguments for tough budget conversations ("Why we need to invest in marketing")</li>
+      <li><strong>Event Playbooks</strong> — step-by-step run-of-show templates for gala, volunteer day, ribbon cutting, etc.</li>
+    </ul>
+    <a class="back-top" href="#top">↑ Back to top</a>
+  </div>
 
-<h2 id="journey">Member Journey</h2>
-<p>Six stages: <b>Awareness → Interest → Consideration → Join → Retain → Recommit</b>. For each stage, document what the prospect experiences, what touchpoints engage them, and what conversion you want. The map informs which campaigns to run and where to invest.</p>
+  <div class="section" id="plan">
+    <h2>7. Build Annual Marketing Plan</h2>
+    
+    <p>The capstone: a polished annual marketing plan (HTML preview + .docx download) that pulls together campaigns, personas, messaging, calendar, and budget into a single board-ready document.</p>
+    <p>Best practice: build the plan once a year (Q4 of the prior year), then update quarterly. The Generator does the busywork — you do the strategy.</p>
+    <a class="back-top" href="#top">↑ Back to top</a>
+  </div>
 
-<h2 id="partnerships">Partnership Outreach</h2>
-<p>Track potential partner organizations (community partners, sponsors, funders, media, religious orgs, corporate). Each entry captures status (identified → outreach-sent → in-conversation → active → dormant → declined), purpose, contact info, and notes. Treat this like a sales pipeline — partnerships compound over time.</p>
+  <div class="section" id="contact">
+    <h2>Contact &amp; Support</h2>
+    <p>For questions, feedback, or feature requests, contact the Build Your Club Academy team at <a href="mailto:skycopatc@yahoo.com">skycopatc@yahoo.com</a>. We update these tools regularly — check back for new features.</p>
+    <a class="back-top" href="#top">↑ Back to top</a>
+  </div>
 
-<h2 id="personas">Personas</h2>
-<p>Reusable target audience profiles. Each persona captures demographics, motivations, barriers, messages that resonate, and best channels. Reference these from campaign briefs. The demo includes "New Nonprofit ED" and "Founding Board Chair" as examples.</p>
-
-<h2 id="messaging">Messaging Library</h2>
-<p>Your most-reused content. Six fields:</p>
-<ul>
-<li><b>Tagline</b> — short, memorable phrase (6-10 words)</li>
-<li><b>Mission Statement</b> — your formal mission</li>
-<li><b>Value Proposition</b> — one-paragraph "what you offer + who it's for + why it matters"</li>
-<li><b>Key Messages</b> — 3-5 talking points you want to repeat across all channels</li>
-<li><b>Brand Voice</b> — how you sound (warm, authoritative, casual, etc.)</li>
-<li><b>Boilerplate "About"</b> — 3-5 sentence org description used in press releases and applications</li>
-</ul>
-<p>Time you spend here pays off in every other page.</p>
-
-<h2 id="emails">Email Sequences</h2>
-<p>Multi-email sequences for nurture, welcome, re-engagement, or post-event follow-up. Each sequence has a trigger (what starts it) and a list of emails with day offsets, subjects, preview text, and bodies. The demo seeds an "Open House Follow-up" sequence with 3 emails at Day 0 / 7 / 14.</p>
-
-<h2 id="collateral">Collateral Builder</h2>
-<p>Generate one-pagers, two-pagers, flyers, info sheets, postcards, table tents, and rack cards. Each piece has a title, tagline/headline, body, CTA, and contact line. Click <b>Preview</b> to see the assembled piece in a print-ready new tab.</p>
-
-<h2 id="social">Social Media</h2>
-<p>A simple content calendar. Each post has a date, platform (Facebook, Instagram, LinkedIn, Twitter/X, Threads, TikTok, YouTube), body, optional link, and status (draft / scheduled / posted / cancelled). Designed to plan ahead — not to actually post on your behalf.</p>
-
-<h2 id="press">Press & Media</h2>
-<p>Press release builder in the standard nonprofit format: <b>For Immediate Release</b> tag, dateline, headline, lede, body, ### end mark, boilerplate "About [Org]", and media contact. Click <b>Preview</b> for a print-ready newspaper-style version.</p>
-
-<h2 id="justify">Board Justifications</h2>
-<p>Modeled on the Board-Ready Justification format. Use this when you need board approval for a marketing initiative — new campaign, hiring an agency, technology purchase, major event. The structure walks through:</p>
-<ol>
-<li><b>Purpose</b> — what are you asking the board to approve?</li>
-<li><b>The Operational Case</b> — what problem does this solve?</li>
-<li><b>The Fiduciary Case</b> — how does this serve the board's fiduciary duty?</li>
-<li><b>Cost vs. Expected Return</b> — money in, money/value out</li>
-<li><b>Risk Management</b> — what could go wrong; how you'll mitigate</li>
-<li><b>Recommended Motion</b> — exact text the board will vote on</li>
-</ol>
-<p>Click <b>Preview</b> to see the assembled justification ready to print and bring to the meeting.</p>
-
-<h2 id="build">Build Marketing Plan</h2>
-<p>Assembles your messaging, personas, campaigns, and events into a single polished plan. Three outputs:</p>
-<ul>
-<li><b>Preview (HTML)</b> — opens in new tab, print-ready</li>
-<li><b>Download .html</b> — saves the file locally</li>
-<li><b>Download .docx</b> — generates a Word document for the board packet</li>
-</ul>
-
-<h2 id="committee">For the Membership & Outreach Committee</h2>
-<p>If you're using this with a committee, the natural workflow is:</p>
-<ul>
-<li>Committee chair owns the <b>Messaging Library</b>, <b>Personas</b>, and <b>Member Journey</b> — these are organizational, not campaign-specific.</li>
-<li>Individual committee members can own specific <b>Campaigns</b>.</li>
-<li>The committee reviews <b>Board Justifications</b> together before bringing them to the full board.</li>
-<li>At each committee meeting, walk through the <b>Annual Calendar</b> to spot bottlenecks.</li>
-<li>Use the <b>Build Marketing Plan</b> output as a recurring exhibit in the committee's report to the full Board.</li>
-</ul>
-
-<h2 id="team">Team & Pro</h2>
-<p>Up to 3 team seats on the Free plan; unlimited on Pro ($29/month, 14-day free trial). Leader role manages the team; member role can edit any data but not invite/remove. Super-admin (<code>skycopatc@yahoo.com</code> / <code>Buildyourclub</code>) sees all teams across the system.</p>
-
-<h2 id="disclaimer">Disclaimer</h2>
-<p>This tool produces drafts and plans. Outcomes depend on execution. Marketing for nonprofits is iterative — track your KPIs, learn what works, and adjust.</p>
-
-<p style="margin-top:32px;padding-top:18px;border-top:1px solid var(--border);font-size:13px;color:var(--muted)">Build Your Club Academy · Nonprofit Marketing User Guide</p>
-</article>
+</main>
 </div>
-
-<script>
-const sections = document.querySelectorAll('h2[id]');
-const links = document.querySelectorAll('.toc a');
-const linkByHash = {}; links.forEach(l => { linkByHash['#'+l.getAttribute('href').slice(1)] = l; });
-function onScroll(){ let active = null; const top = 100; sections.forEach(s => { if (s.getBoundingClientRect().top <= top) active = s.id; }); links.forEach(l => l.classList.remove('active')); if (active && linkByHash['#'+active]) linkByHash['#'+active].classList.add('active'); }
-window.addEventListener('scroll', onScroll, { passive:true }); onScroll();
-</script>
-</body></html>
+</body>
+</html>
